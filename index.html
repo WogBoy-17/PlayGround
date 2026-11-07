@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#101619" />
+  <title>IRON FRONTIER — Last Signal</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game">
+    <canvas id="world" aria-label="3D mech survival game"></canvas>
+    <div class="vignette"></div>
+    <div id="hud" class="hud hidden">
+      <header class="topbar">
+        <div class="brand"><span class="brand-mark">IF</span><div><b>IRON FRONTIER</b><small>LAST SIGNAL // SECTOR 09</small></div></div>
+        <div class="mission"><span class="live-dot"></span><span id="phase-label">SURVIVE THE SWARM</span><strong id="timer">00:00</strong></div>
+        <div class="top-right"><span class="kill-count"><small>CONFIRMED</small><b id="kills">000</b></span><button id="pause-button" class="icon-button" aria-label="Pause">Ⅱ</button></div>
+      </header>
+      <section class="left-hud">
+        <div class="pilot-card"><div class="pilot-avatar">◈</div><div><small>PILOT // VANGUARD</small><b>RANGER-07</b></div><span class="status-pill">ONLINE</span></div>
+        <div class="stat-block"><div class="stat-label"><span>FRAME INTEGRITY</span><b id="health-text">100 / 100</b></div><div class="bar"><i id="health-bar"></i></div></div>
+        <div class="stat-block xp-block"><div class="stat-label"><span>COMBAT DATA <em id="level-label">LV 01</em></span><b id="xp-text">0 / 8</b></div><div class="bar xp-bar"><i id="xp-bar"></i></div></div>
+        <div class="weapon-chip"><span class="weapon-icon">⌁</span><div><small>PRIMARY // AUTO TRACK</small><b>ARC-BURST CANNON</b></div><span class="ready-dot"></span></div>
+      </section>
+      <section class="right-hud"><div class="radar-frame"><div class="radar-label"><span>TACTICAL RADAR</span><i>● LIVE</i></div><canvas id="radar" width="156" height="156"></canvas><div class="radar-footer"><span>RANGE 50M</span><span id="threat-count">0 HOSTILES</span></div></div><div id="buff-list" class="buff-list"></div></section>
+      <div class="center-reticle"><i></i><b></b><i></i><span id="target-name"></span></div>
+      <div class="bottom-hud"><div class="objective"><span class="objective-icon">◎</span><div><small>FIELD ORDER</small><b id="objective-text">HOLD OUT UNTIL EXTRACTION</b></div></div><div class="ability" id="ability"><span class="ability-glyph">✦</span><div><small>OVERDRIVE PULSE <kbd>SPACE</kbd></small><b id="ability-status">READY</b></div><div class="ability-meter"><i id="ability-meter"></i></div></div></div>
+      <div id="toast" class="toast"></div>
+    </div>
+    <section id="title-screen" class="screen">
+      <div class="title-copy"><div class="eyebrow"><i></i> FRONTIER COMMAND // DISTRESS CHANNEL 09</div><h1>IRON<br/><span>FRONTIER</span></h1><p class="subtitle">THE SIGNAL ENDS HERE.</p><p class="intro">Outnumbered. Outgunned. Still operational.<br/>Hold the badlands until the extraction beacon locks on.</p><button id="start-button" class="primary-button"><span>DEPLOY MECH</span><b>↗</b></button><div class="best-record">BEST RUN <strong id="best-record">—</strong><span> / 03:00</span></div></div>
+      <div class="title-bottom"><span>FIELD MANUAL</span><div><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><small>MOVE</small></div><div><kbd>MOUSE</kbd><small>AIM</small></div><div><kbd>SPACE</kbd><small>OVERDRIVE</small></div><div><kbd>ESC</kbd><small>PAUSE</small></div><span class="build-tag">VANGUARD FRAME // MK-IV</span></div>
+      <div class="title-stamp">09<br/><small>SECTOR</small></div>
+    </section>
+    <section id="pause-screen" class="screen modal hidden"><div class="modal-card"><div class="eyebrow">SYSTEMS STANDBY</div><h2>PAUSED</h2><p>The badlands can wait. For a moment.</p><button id="resume-button" class="primary-button"><span>RETURN TO COMBAT</span><b>↗</b></button><div class="pause-hint">PRESS <kbd>ESC</kbd> TO RESUME</div></div></section>
+    <section id="upgrade-screen" class="screen modal hidden"><div class="upgrade-wrap"><div class="eyebrow"><i></i> COMBAT DATA SYNCHRONIZED</div><h2>FRAME <span>UPGRADE</span></h2><p class="upgrade-subtitle">Choose one field modification to install.</p><div id="upgrade-options" class="upgrade-options"></div><div class="pause-hint">SELECT A MODIFICATION TO CONTINUE</div></div></section>
+    <section id="end-screen" class="screen modal hidden"><div class="modal-card"><div class="eyebrow" id="end-eyebrow">EXTRACTION CONFIRMED</div><h2 id="end-title">YOU HELD THE LINE</h2><p id="end-copy">The signal made it through.</p><div class="run-stats"><div><small>HOSTILES DOWN</small><b id="end-kills">0</b></div><div><small>SURVIVAL TIME</small><b id="end-time">00:00</b></div></div><button id="restart-button" class="primary-button"><span>DEPLOY AGAIN</span><b>↗</b></button><div class="pause-hint">THE FRONTIER ISN'T DONE WITH YOU</div></div></section>
+    <div id="loading" class="loading"><span class="loader"></span>INITIALIZING VANGUARD FRAME</div>
+  </main>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
